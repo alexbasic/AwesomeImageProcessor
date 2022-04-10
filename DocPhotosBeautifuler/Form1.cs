@@ -30,6 +30,17 @@ namespace DocPhotosBeautifuler
         {
             if (openFileDialog1.ShowDialog(this) != DialogResult.OK) return;
 
+            var oldCursor = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+
+            //result image clear
+            _adjustedBitmap = null;
+            pictureBox2.Image?.Dispose();
+            pictureBox2.Image = null;
+            pictureBox4.Image?.Dispose();
+            pictureBox4.Image = null;
+            textBox3.Text = "";
+
             textBox1.Text = openFileDialog1.FileName;
 
             _bitmap = new Bitmap(openFileDialog1.FileNames[0]);
@@ -41,6 +52,8 @@ namespace DocPhotosBeautifuler
             var histogramBitmap = new Bitmap(pictureBox3.ClientSize.Width, pictureBox3.ClientSize.Height);
             _histogram.DrawTo(histogramBitmap);
             pictureBox3.Image = histogramBitmap;
+
+            this.Cursor = oldCursor;
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -101,6 +114,9 @@ namespace DocPhotosBeautifuler
                 return;
             }
 
+            var oldCursor = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+
             _adjustedBitmap = new Bitmap(dstSizePix.Width, dstSizePix.Height, PixelFormat.Format24bppRgb);
             _adjustedBitmap.SetResolution(destinationDpi, destinationDpi);
 
@@ -111,7 +127,11 @@ namespace DocPhotosBeautifuler
                 g.DrawImage(_bitmap, 0, 0, dstSizePix.Width, dstSizePix.Height);
             }
 
-            new ChangeContrast().Change(_adjustedBitmap, _histogram);
+            if (!checkBox1.Checked)
+            {
+                new ChangeContrast().Change(_adjustedBitmap, _histogram);
+            }
+
             textBox3.Text = GetBitmapInfo(_adjustedBitmap);
             pictureBox2.Refresh();
 
@@ -120,6 +140,8 @@ namespace DocPhotosBeautifuler
             var histogramBitmap = new Bitmap(pictureBox4.ClientSize.Width, pictureBox4.ClientSize.Height);
             histogram.DrawTo(histogramBitmap);
             pictureBox4.Image = histogramBitmap;
+
+            this.Cursor = oldCursor;
         }
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)

@@ -33,7 +33,7 @@ namespace DocPhotosBeautifuler
             var b = 1f / (-mi+ma);
             var a = -b * mi;
             
-            var y = (int)(a + b * (float)value);
+            var y = (int)((a + b * ((float)value/255f))*255f);
 
             if (y < 0) return 0;
             if (y > 255) return 255;
