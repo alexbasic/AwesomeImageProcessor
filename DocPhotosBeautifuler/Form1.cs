@@ -14,6 +14,7 @@ namespace DocPhotosBeautifuler
     public partial class Form1 : Form
     {
         Bitmap _bitmap;
+        Histogram _histogram;
         Bitmap _adjustedBitmap;
         int _jpegQuality;
 
@@ -35,10 +36,10 @@ namespace DocPhotosBeautifuler
             textBox2.Text = GetBitmapInfo(_bitmap);
             pictureBox1.Refresh();
 
-            var histogram = new Histogram();
-            histogram.Analyze(_bitmap);
+            _histogram = new Histogram();
+            _histogram.Analyze(_bitmap);
             var histogramBitmap = new Bitmap(pictureBox3.ClientSize.Width, pictureBox3.ClientSize.Height);
-            histogram.DrawTo(histogramBitmap);
+            _histogram.DrawTo(histogramBitmap);
             pictureBox3.Image = histogramBitmap;
         }
 
@@ -110,6 +111,7 @@ namespace DocPhotosBeautifuler
                 g.DrawImage(_bitmap, 0, 0, dstSizePix.Width, dstSizePix.Height);
             }
 
+            new ChangeContrast().Change(_adjustedBitmap, _histogram);
             textBox3.Text = GetBitmapInfo(_adjustedBitmap);
             pictureBox2.Refresh();
 

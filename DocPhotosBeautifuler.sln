@@ -1,14 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocPhotosBeautifuler", "DocPhotosBeautifuler\DocPhotosBeautifuler.csproj", "{C0337F5D-CBF7-440B-8D0F-0E87F2F363C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0337F5D-CBF7-440B-8D0F-0E87F2F363C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0337F5D-CBF7-440B-8D0F-0E87F2F363C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0337F5D-CBF7-440B-8D0F-0E87F2F363C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0337F5D-CBF7-440B-8D0F-0E87F2F363C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {871A09E2-9E38-44DE-9B82-6C85FF9E6942}
 	EndGlobalSection
 EndGlobal

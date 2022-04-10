@@ -16,6 +16,8 @@ namespace DocPhotosBeautifuler
         public int[] StatBufferBlue { get => _statBufferBlue; }
 
         public int[] CommonStatBuffer { get => _commonStatBuffer; }
+        
+        public int MaxValue { get => _maxValue; }
 
         public void Analyze(Bitmap bitmap)
         {
